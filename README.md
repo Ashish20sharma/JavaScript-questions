@@ -104,3 +104,89 @@ Ans:
     }
     console.log(Fibonacci([0,1]))
 
+8. Write a function that checks if two strings are anagrams of each other.
+Ans:
+
+        function anagram(str1,str2) {
+          if(str1.length!==str2.length){
+            return "Not anagram";
+          }
+  
+          const wordCount={};
+          for(let item of str1){
+            wordCount[item]=(wordCount[item]||0)+1;
+          }
+  
+          for(let item of str2){
+            for(let count in wordCount){
+              if(item===count){
+                wordCount[count]--;
+              }
+            }
+          }
+  
+          for(let count in wordCount){
+            if(wordCount[count]>=1){
+              return "Not a anagram";
+            }
+          }
+          return "anagram";
+        }
+        console.log(anagram("listen","silent"));
+
+9. Write a function to remove all occurrences of a specific element from an array.
+Ans:
+
+        function removeElement(arr,element) {
+          let newArr=[];
+          for(let i=0;i<arr.length;i++){
+            if(arr[i]!==element){
+              newArr.push(arr[i]);
+            }
+          }
+          return newArr;
+        }
+        console.log(removeElement([1,2,3,2,4,5,6,2],2));
+
+Second solution:-
+
+        function removeElement(arr,element) {
+          let newArr=arr.filter((item)=>{
+            return item!==element;
+          })
+          return newArr;
+        }
+        console.log(removeElement([1,2,3,2,4,5,6,2],2));
+        
+10.Write a function that finds the longest word in a sentence.
+Ans:
+
+        function findLongestWord(str) {
+          let arr=str.split(" ");
+          let longest=arr[0];
+          for(let i=0;i<arr.length;i++){
+            if(longest.length<arr[i].length){
+              longest=arr[i];
+            }
+          }
+          return longest;
+        }
+        console.log(findLongestWord("i am ashish"));
+
+11.Implement a function that merges two sorted arrays into one sorted array.
+Ans:
+
+        function mergeSortedArrays(arr1,arr2) {
+          let sortedArr=[...arr1,...arr2];
+          for(let i=0;i<sortedArr.length;i++){
+            for(let j=0;j<sortedArr.length;j++){
+              if(sortedArr[j]>sortedArr[j+1]){
+                let temp=sortedArr[j];
+                sortedArr[j]=sortedArr[j+1];
+                sortedArr[j]=temp;
+              }
+            }
+          }
+          return sortedArr;
+        }
+        console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
