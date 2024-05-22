@@ -190,3 +190,66 @@ Ans:
           return sortedArr;
         }
         console.log(mergeSortedArrays([1, 3, 5], [2, 4, 6]));
+
+12.Implement a function to calculate the sum of digits in a number.
+Ans:
+
+        function sumOfDigits(num) {
+          let arr=String(num).split('');
+          let sum=0;
+          for(let i=0;i<arr.length;i++){
+            sum+=Number(arr[i]);
+          }
+          return sum;
+        }
+        console.log(sumOfDigits(12345));
+
+13.Implement a function that finds the second smallest element in an array.
+Ans:
+
+        function findSecondSmallest(arr) {
+          let max=arr[0];
+          let secondMax=null;
+          for(let i=0;i<arr.length;i++){
+            if(max<arr[i]){
+              secondMax=max;
+              max=arr[i];
+            }
+          }
+          return {max:max,secondMax:secondMax};
+        }
+        console.log(findSecondSmallest([1,5,4,2,5,6]));
+
+14.Write a function to reverse the order of words in a sentence.
+Ans:
+
+        function reverseWords(str) {
+          let arr=str.split(" ");
+          let reverse="";
+          for(let i=arr.length-1;i>=0;i--){
+            reverse+=arr[i]+" ";
+          }
+          return reverse;
+        }
+        console.log(reverseWords("Ashish sharma"));
+
+15.Write a function that finds the most frequent element in an array.
+Ans:
+
+        function findMostFrequent(arr) {
+          let wordCount={};
+          for(let item of arr){
+            wordCount[item]=(wordCount[item]||0)+1;
+          }
+  
+          let mostFrequentCount=0;
+          let mostFrequent;
+          for(let item in wordCount){
+            if(wordCount[item]>mostFrequentCount){
+              mostFrequentCount=wordCount[item];
+              mostFrequent=item;
+            }
+          }
+          return mostFrequent;
+        }
+        console.log(findMostFrequent([1,4,5,7,8,8,8,8,8,8,4,4,4,4]));
